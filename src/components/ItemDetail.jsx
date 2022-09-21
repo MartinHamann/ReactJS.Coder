@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ItemCount from './ItemCount'
 import { Link } from "react-router-dom";
 
 const ItemDetail = ({item}) => {
+
+  const [endPurchase, setEndPurchase] = useState(false);
+  const onAdd = (cantidad) => {
+    setEndPurchase(true);
+  }
   return (
     <div className='container text'>
         <div className='row justify-content-md-center'>
@@ -12,11 +17,12 @@ const ItemDetail = ({item}) => {
             <div className='col-md-4'>
                 <h2>{item.nombre}</h2>
                 <p>{item.descripcion}</p>
-                <br />  
+                <br />
                 <h5>${item.precio}</h5>
-                <ItemCount stock={10} inicial={1} onAdd={0}/>
+                {endPurchase
+                  ? <Link to= '/cart'><input type="button" className="btn btn-success" value="Compraste!"></input> </Link>
+                  : <ItemCount stock={item.stock} inicial={1} onAdd={onAdd} />}
             </div>
-
         </div>
     </div>
   )

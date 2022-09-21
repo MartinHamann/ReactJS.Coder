@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
         });
         
         getProduct.then(respuesta => setItem(respuesta.find(productos => productos.id === itemId)));
-    }, []);
+    }, [itemId]);
     return (
         <div>
             <ItemDetail item= {item}/>
