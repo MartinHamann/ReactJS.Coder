@@ -1,12 +1,17 @@
 import React, {useState} from 'react'
 import ItemCount from './ItemCount'
 import { Link } from "react-router-dom";
+import { useCartContext } from '../context/CartContext';
 
 const ItemDetail = ({item}) => {
-
+  
   const [endPurchase, setEndPurchase] = useState(false);
+  
+  const {addToCart} = useCartContext();
+
   const onAdd = (cantidad) => {
-    setEndPurchase(true);
+    setEndPurchase(cantidad);
+    addToCart(item, cantidad);
   }
   return (
     <div className='container text'>
