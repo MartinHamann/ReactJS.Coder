@@ -33,7 +33,7 @@ const Cart = () => {
                 <button onClick={() => removeProduct(producto.id)}>Eliminar</button>
             </div>
         </div>
-                </div>
+    </div>
         ))}
     </div>
   )
