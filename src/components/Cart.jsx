@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 
 const Cart = () => {
 
-    const {cart, removeProduct} = useContext(CartContext);
+    const {cart, removeProduct, clearCart, totalPrice} = useContext(CartContext);
+    const total = totalPrice();
 
   if (cart.length === 0) {
     return (
@@ -35,6 +36,10 @@ const Cart = () => {
         </div>
     </div>
         ))}
+        <br/>
+        <button onClick={clearCart}>Delete all</button>
+        <h2>Total: ${total}</h2>
+        <Link to="/checkout"><button>Finalizar compra</button></Link>
     </div>
   )
 }

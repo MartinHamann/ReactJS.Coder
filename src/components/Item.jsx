@@ -1,14 +1,8 @@
 import React from "react";
-import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Item = ({nombre, imagen, precio, id}) => {
 
-  const [endPurchase, setEndPurchase] = useState(false);
-  const onAdd = (cantidad) => {
-    setEndPurchase(true);
-    }
 
     return (
         <div className="card">
@@ -19,9 +13,9 @@ const Item = ({nombre, imagen, precio, id}) => {
                 <h5 className="card-title text-center"><b>{nombre}</b></h5>
                 <p className="card-text text-center">${precio}</p>
             </div>
-        {endPurchase
-                  ? <Link to= '/cart'><input type="button" className="btn btn-success" value="Compraste!"></input> </Link>
-                  : <ItemCount stock={Item.stock} inicial={1} onAdd={onAdd} />}
+            <button className="btn btn-success">
+                <Link to={`/item/${id}`} className= "text-decoration-none text-reset">Ver detalles</Link>
+            </button>
         </div>
     )
 }
